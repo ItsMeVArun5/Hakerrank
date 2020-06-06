@@ -6,7 +6,7 @@ import random
 import re
 import sys
 
-def binarySearch (arr, lb, ub, x): 
+def rankSearch(arr, lb, ub, x): 
   
     # Check base case 
     if ub >= lb: 
@@ -24,12 +24,12 @@ def binarySearch (arr, lb, ub, x):
         # If element is smaller than mid, then it  
         # can only be present in right subarray 
         elif arr[mid] > x:
-            return binarySearch(arr, mid+1, ub, x) 
+            return rankSearch(arr, mid+1, ub, x) 
   
         # Else the element can only be present  
         # in left subarray 
         else: 
-            return binarySearch(arr, lb, mid-1, x) 
+            return rankSearch(arr, lb, mid-1, x) 
   
     else: 
         return lb+1
@@ -45,7 +45,7 @@ def climbingLeaderboard(scores, alice):
     non_Repeated_scores = list(dict.fromkeys(scores)) 
 
     for x in alice:
-        ranking.append(binarySearch(non_Repeated_scores, 0, len(non_Repeated_scores)-1, x))
+        ranking.append(rankSearch(non_Repeated_scores, 0, len(non_Repeated_scores)-1, x))
             
     return ranking
 
