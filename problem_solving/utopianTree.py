@@ -9,7 +9,7 @@ import sys
 # Complete the utopianTree function below.
 def utopianTree(n):
     tree_height = 1
-    height = {
+    growth = {
         "spring": 2,
         "summer": 1
         }
@@ -18,16 +18,16 @@ def utopianTree(n):
     
     while(n!=0):
         if wheather=="spring":
-            tree_height *= height["spring"]
+            tree_height *= growth["spring"]
             wheather = "summer"
             n -= 1
         else:
-            tree_height += height["summer"]
+            tree_height += growth["summer"]
             wheather = "spring"
             n -= 1
 
     return tree_height
-    
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
