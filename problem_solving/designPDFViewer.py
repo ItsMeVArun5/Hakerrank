@@ -22,7 +22,7 @@ def designerPdfViewer(h, word):
     for x in word:
         max_height.append(letter_height[x])
 
-    return len(word)*max(max_height)
+    return len(word) * max(max_height)
 
 
 if __name__ == '__main__':
