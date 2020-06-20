@@ -16,42 +16,24 @@ import sys
 #
 
 
-def checkSum(arr, new_element):
-    count = 0
-    for num in arr:
-        if ((num+new_element) % k != 0):
-            count += 1
-        else:
-            return False
-
-    if count == len(arr):
-        return True
-
-
 def nonDivisibleSubset(k, s):
     # Write your code here
-    # s.sort()
-    result = []
-    length_of_combinations = []
-    idx = 0
+    # filling the k-size list with values zero.
+    remainder_count = [0] * k
+    count = 0
 
     for num in s:
-        result = []
-        result.append(num)
+        remainder_count[num % k] += 1
 
-        for index in range(len(s)):
-            if index == idx:
-                continue
+    for x in range(1, (k//2)+1):
+        if x != k-x:
+            count += max(remainder_count[x], remainder_count[k-x])
 
-            # print(checkSum(result, s[index]))
-            if (checkSum(result, s[index])):
-                result.append(s[index])
+    if k % 2 == 0:
+        count += 1
 
-        idx += 1
-        length_of_combinations.append(len(result))
-        print(result)
-
-    return max(length_of_combinations)
+    count += min(remainder_count[0], 1)
+    return count
 
 
 if __name__ == '__main__':
